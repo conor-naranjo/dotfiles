@@ -1,0 +1,9 @@
+[submodule "/home/conor/.dotfiles/vim/.vim/pack/conor/start/nerdtree"]
+	path = /home/conor/.dotfiles/vim/.vim/pack/conor/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "/home/conor/.dotfiles/vim/.vim/pack/conor/start/autoswap"]
+	path = /home/conor/.dotfiles/vim/.vim/pack/conor/start/autoswap
+	url = https://github.com/gioele/vim-autoswap.git
+[submodule "/home/conor/.dotfiles/vim/.vim/pack/conor/opt/vim-go"]
+	path = /home/conor/.dotfiles/vim/.vim/pack/conor/opt/vim-go
+	url = https://github.com/fatih/vim-go.git
