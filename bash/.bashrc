@@ -27,7 +27,9 @@ color5=$(tput setf 7)
 #PS1='[\u@\h \W]\$ '
 PS1='\$ '
 
-export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 shopt -s extglob
 
