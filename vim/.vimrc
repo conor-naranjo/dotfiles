@@ -11,26 +11,35 @@ set fo+=t
 " Use spaces instead of tabs
 filetype plugin indent on
 
+" Allow backspace to delete indentation and inserted text
+" i.e. how most programs work
+set backspace=indent,eol,start
+" indent  allow backspacing over autoindent
+" eol     allow backspacing over linebreaks
+" start   allow backspacing over the start of insert; Ctrl-W and Ctrl-U
+" "      stop once at the start of insert
+
+
 " For html, ruby, css files; 2 space tab
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
-autocmd Filetype rb setlocal ts=2 sw=2 expandtab
-autocmd Filetype css setlocal ts=2 sw=2 expandtab
-autocmd Filetype sql setlocal ts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sw=2 expandtab
+autocmd FileType rb setlocal ts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sw=2 expandtab
+autocmd FileType sql setlocal ts=2 sw=2 expandtab
 
 " For Java, Python, Lisp; 4 space tab
-autocmd Filetype java setlocal ts=4 sw=4 expandtab
-autocmd Filetype lisp setlocal ts=4 sw=4 expandtab
-autocmd Filetype py setlocal ts=4 sw=4 expandtab
+autocmd FileType java setlocal ts=4 sw=4 expandtab
+autocmd FileType lisp setlocal ts=4 sw=4 expandtab
+autocmd FileType py setlocal ts=4 sw=4 expandtab
 
 " For C/H files we want 8 space tab-width, but not 8 spaces.
-autocmd Filetype c setlocal ts=8 sw=8
-autocmd Filetype h setlocal ts=8 sw=8 
+autocmd FileType c setlocal ts=8 sw=8
+autocmd FileType h setlocal ts=8 sw=8 
 "For C / CPP files make switch and case line up
 au FileType c,cpp setl cindent cinoptions+=:0
 
-"For Golang, load the go-vim plugin
-autocmd Filetype go packadd vim-go
+"For Golang, load the vim-go plugin
+autocmd! FileType go packadd vim-go
 
 
 """ PYTHON Specific Settings

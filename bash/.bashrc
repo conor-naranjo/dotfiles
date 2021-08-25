@@ -27,6 +27,8 @@ color5=$(tput setf 7)
 #PS1='[\u@\h \W]\$ '
 PS1='\$ '
 
+export PATH=$PATH:/usr/local/go/bin
+
 shopt -s extglob
 
 if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
