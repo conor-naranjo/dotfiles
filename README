@@ -1,0 +1,13 @@
+A collection of various dotfiles and configs used across systems.
+
+Has the bare essentials needed after a fresh Arch Linux install
+and bash/vim configs that can be used across any Distro
+
+
+To copy dotfiles:
+stow <directory>
+
+E.g.: stow i3
+
+If stow is not installed, it can be copied from ./scripts/bin/stow to any
+location that's inside of $PATH
