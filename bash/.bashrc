@@ -39,7 +39,7 @@ git_color() {
     if [[ "$STATUS" == *'Not a git repository'* ]]
         then echo "" # nothing
     else
-        if [[ "$STATUS" != *'working directory clean'* ]]
+        if [[ "$STATUS" != *'nothing to commit'* ]]
             then echo -e '\033[0;31m' # red if need to commit
         else
             if [[ "$STATUS" == *'Your branch is ahead'* ]]
