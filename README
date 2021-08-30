@@ -14,10 +14,8 @@ location that's inside of $PATH
 
 Vim plugins are version controlled using submodules
 To add a new plugin run: 
-git submodule add <plugin repo> <this repo>/vim/.vim/pack/<key>/[start | opt]/<plugin name>
+git submodule add <plugin repo> ./vim/.vim/pack/<key>/[start | opt]/<plugin name>
+After running git submodule add, commit changes to .gitmodules
 
 On a fresh clone of the dotfiles, to install Vim plugins run:
-git submodule init
-Followed by
-git submodule update
-
+./get-submodules.sh
