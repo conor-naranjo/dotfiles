@@ -46,7 +46,7 @@ git_color() {
         echo -e '\033[0;32m' # else green
     fi
 }
-PS1='\[\w $(git_color)$(git_branch)\033[0;37m\] \$ '
+PS1=' \[\w $(git_color)$(git_branch)\033[0;37m\] \$ '
 #PS1='\$ '
 
 export GOPATH=$HOME/go
