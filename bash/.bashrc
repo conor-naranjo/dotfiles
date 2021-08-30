@@ -24,8 +24,34 @@ color3=$(tput setf 6)
 color4=$(tput setf 2)
 color5=$(tput setf 7)
 
-#PS1='[\u@\h \W]\$ '
-PS1='\$ '
+# Get Git branch of current directory
+git_branch () {
+    if git rev-parse --git-dir >/dev/null 2>&1
+        then echo -e "" git:\($(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')\)
+    else
+        echo ""
+    fi
+}
+
+# Set a specific color for the status of the Git repo
+git_color() {
+    local STATUS=`git status 2>&1`
+    if [[ "$STATUS" == *'Not a git repository'* ]]
+        then echo "" # nothing
+    else
+        if [[ "$STATUS" != *'working directory clean'* ]]
+            then echo -e '\033[0;31m' # red if need to commit
+        else
+            if [[ "$STATUS" == *'Your branch is ahead'* ]]
+                then echo -e '\033[0;33m' # yellow if need to push
+            else
+                echo -e '\033[0;32m' # else green
+            fi
+        fi
+    fi
+}
+PS1='\[\w $(git_color)$(git_branch)\033[0;37m\] \$ '
+#PS1='\$ '
 
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
