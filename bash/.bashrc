@@ -36,18 +36,14 @@ git_branch () {
 # Set a specific color for the status of the Git repo
 git_color() {
     local STATUS=`git status 2>&1`
-    if [[ "$STATUS" == *'Not a git repository'* ]]
-        then echo "" # nothing
+    if [[ "$STATUS" == *'Not a git repository'* ]]; then
+        echo "" # nothing
+    elif [[ "$STATUS" != *'nothing to commit'* ]]; then
+        echo -e '\033[0;31m' # red if need to commit
+    elif [[ "$STATUS" == *'Your branch is ahead'* ]]; then
+        echo -e '\033[0;33m' # yellow if need to push
     else
-        if [[ "$STATUS" != *'nothing to commit'* ]]
-            then echo -e '\033[0;31m' # red if need to commit
-        else
-            if [[ "$STATUS" == *'Your branch is ahead'* ]]
-                then echo -e '\033[0;33m' # yellow if need to push
-            else
-                echo -e '\033[0;32m' # else green
-            fi
-        fi
+        echo -e '\033[0;32m' # else green
     fi
 }
 PS1='\[\w $(git_color)$(git_branch)\033[0;37m\] \$ '
