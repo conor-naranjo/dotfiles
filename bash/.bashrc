@@ -18,11 +18,10 @@ alias fx='firefox --new-instance --profile $(mktemp -d)'
 # Cycle through previous option on Shift+Tab
 bind '"\e[Z":menu-complete-backward'
 
-color1=$(tput setf 5)
-color2=$(tput setf 1)
-color3=$(tput setf 6)
-color4=$(tput setf 2)
-color5=$(tput setf 7)
+color_red=$(tput setaf 1)
+color_yellow=$(tput setaf 3)
+color_green=$(tput setaf 4)
+color_white=$(tput setaf 7)
 
 # Get Git branch of current directory
 git_branch () {
@@ -39,15 +38,14 @@ git_color() {
     if [[ "$STATUS" == *'Not a git repository'* ]]; then
         echo "" # nothing
     elif [[ "$STATUS" != *'nothing to commit'* ]]; then
-        echo -e '\033[0;31m' # red if need to commit
+        echo -e ${color_red}  # red if need to commit
     elif [[ "$STATUS" == *'Your branch is ahead'* ]]; then
-        echo -e '\033[0;33m' # yellow if need to push
+        echo -e ${color_yellow}  # yellow if need to push
     else
-        echo -e '\033[0;32m' # else green
+        echo -e ${color_green}  # else green
     fi
 }
-PS1=' \[\w $(git_color)$(git_branch)\033[0;37m\] \$ '
-#PS1='\$ '
+PS1=' \[\w $(git_color)$(git_branch)${color_white} \n \$ '
 
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
