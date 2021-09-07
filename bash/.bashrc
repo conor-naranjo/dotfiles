@@ -19,8 +19,8 @@ alias fx='firefox --new-instance --profile $(mktemp -d)'
 bind '"\e[Z":menu-complete-backward'
 
 color_red=$(tput setaf 1)
+color_green=$(tput setaf 2)
 color_yellow=$(tput setaf 3)
-color_green=$(tput setaf 4)
 color_white=$(tput setaf 7)
 
 # Get Git branch of current directory
