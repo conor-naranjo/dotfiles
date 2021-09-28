@@ -1,3 +1,6 @@
+" Use spaces instead of tabs
+filetype plugin indent on
+
 " set syntax on and enable a simple color-scheme
 syntax on
 color basic
@@ -7,9 +10,6 @@ set number " Turns on line numbering
 " Sets a text-width of 80 chars and will wrap lines longer than 80 chars
 set tw=80
 set fo+=t
-
-" Use spaces instead of tabs
-filetype plugin indent on
 
 " Allow backspace to delete indentation and inserted text
 " i.e. how most programs work
@@ -26,6 +26,7 @@ autocmd FileType javascript setlocal ts=2 sw=2 expandtab
 autocmd FileType rb setlocal ts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sw=2 expandtab
 autocmd FileType sql setlocal ts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 
 " For Java, Python, Lisp; 4 space tab
 autocmd FileType java setlocal ts=4 sw=4 expandtab
@@ -71,11 +72,8 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Highlight the current working line
 set cursorline
 
-" execute pathogen#infect()
-" autocmd vimenter * NERDTree
-
 " Force swap files to go somewhere else >:[
-set directory^=$HOME/.vim/tmp//
+"set directory^=$HOME/.vim/tmp//
 
 " Enable code folding
 set foldmethod=indent
