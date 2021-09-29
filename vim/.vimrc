@@ -39,8 +39,14 @@ autocmd FileType h setlocal ts=8 sw=8
 "For C / CPP files make switch and case line up
 au FileType c,cpp setl cindent cinoptions+=:0
 
-"For Golang, load the vim-go plugin
+" For Golang, load the vim-go plugin
 autocmd! FileType go packadd vim-go
+
+" Elixir support
+au BufRead,BufNewFile *.ex,*.exs,*.heex,*.leex,*.sface set filetype=elixir
+au BufRead,BufNewFile *.eex set filetype=eelixir
+autocmd! FileType elixir packadd vim-elixir
+autocmd! FileType eelixir packadd vim-elixir
 
 
 """ PYTHON Specific Settings

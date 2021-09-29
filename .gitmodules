@@ -7,3 +7,6 @@
 [submodule "/home/conor/.dotfiles/vim/.vim/pack/conor/opt/vim-go"]
 	path = /home/conor/.dotfiles/vim/.vim/pack/conor/opt/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "vim/.vim/pack/conor/opt/vim-elixir"]
+	path = vim/.vim/pack/conor/opt/vim-elixir
+	url = https://github.com/elixir-editors/vim-elixir.git
