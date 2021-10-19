@@ -49,7 +49,8 @@ PS1=' \[\w $(git_color)$(git_branch)${color_white} \n \$ '
 
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export NPM_GLOBAL=$HOME/.npm-global/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL
 
 shopt -s extglob
 

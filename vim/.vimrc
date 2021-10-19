@@ -78,12 +78,9 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Highlight the current working line
 set cursorline
 
-" Force swap files to go somewhere else >:[
-"set directory^=$HOME/.vim/tmp//
-
 " Enable code folding
 set foldmethod=indent
 set foldlevel=99
 
 " Use spacebar to fold code
-nnoremap <space> za
+" nnoremap <space> za
