@@ -50,8 +50,8 @@ PS1=' \[\w $(git_color)$(git_branch)${color_white} \n \$ '
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
-export GEM_HOME=~/.ruby/bin
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME
+export GEM_HOME=~/.ruby/
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin
 
 shopt -s extglob
 
