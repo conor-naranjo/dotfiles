@@ -44,9 +44,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 
 # Launches various programs
-bindsym $mod+g exec chromium
+# bindsym $mod+g exec chromium
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Shift+s exec spotify
+bindsym $mod+Shift+s exec "$HOME/bin/fuzzpak spotify"
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
