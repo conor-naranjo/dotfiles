@@ -72,7 +72,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Make any line over 81 chars long stand out
-highlight ColorColumn ctermbg=green
+highlight ColorColumn ctermbg=green ctermfg=black
 call matchadd('ColorColumn', '\%81v', 100)
 
 " Highlight the current working line
