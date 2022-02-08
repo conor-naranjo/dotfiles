@@ -30,8 +30,8 @@ highlight clear SpecialKey
 
 " Set up some simple non-intrusive colors
 if &background == "light"
-	highlight String term=underline cterm=NONE ctermfg=DarkGreen
-	highlight Comment term=bold cterm=NONE ctermfg=DarkBlue
+	highlight String term=underline cterm=NONE ctermfg=46
+	highlight Comment term=bold cterm=NONE ctermfg=66 " Spring Green 2
 	highlight Error term=reverse cterm=NONE ctermfg=DarkRed
 	highlight LineNr term=bold cterm=NONE ctermfg=DarkYellow
 	highlight NonText term=bold cterm=NONE ctermfg=DarkYellow
