@@ -41,6 +41,7 @@ au FileType c,cpp setl cindent cinoptions+=:0
 
 " For Golang, load the vim-go plugin
 autocmd! FileType go packadd vim-go
+au filetype go inoremap <buffer> . .<C-x><C-o>
 
 " Elixir support
 au BufRead,BufNewFile *.ex,*.exs,*.heex,*.leex,*.sface set filetype=elixir

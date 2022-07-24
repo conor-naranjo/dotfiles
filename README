@@ -19,3 +19,7 @@ After running git submodule add, commit changes to .gitmodules
 
 On a fresh clone of the dotfiles, to install Vim plugins run:
 ./get-submodules.sh
+
+
+For vim, additional configuration is done for autocomplete, etc.
+Uses YouCompleteMe for LSP and auto-completion support.
