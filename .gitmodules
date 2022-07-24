@@ -10,3 +10,6 @@
 [submodule "vim/.vim/pack/conor/opt/vim-elixir"]
 	path = vim/.vim/pack/conor/opt/vim-elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
+[submodule "vim/.vim/pack/conor/start/YouCompleteMe"]
+	path = vim/.vim/pack/conor/start/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe
