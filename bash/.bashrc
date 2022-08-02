@@ -5,7 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
+alias ls='ls -G'
+
+# use python3 pip
+alias pip='pip3'
 
 # sdcv searches a dict file in ~/stardict/dic
 alias define='sdcv'
@@ -47,15 +51,20 @@ git_color() {
 }
 PS1=' \[\w $(git_color)$(git_branch)${color_white} \n \$ '
 
+# Setup nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin
+export PATH=/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.rd/bin
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 shopt -s extglob
 
-if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
+if [ -x $(command -v cowsay) -a -x $(command -v fortune) ]; then
 	fortune | cowsay
 fi
 
@@ -95,3 +104,7 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
