@@ -80,8 +80,57 @@ call matchadd('ColorColumn', '\%81v', 100)
 set cursorline
 
 " Enable code folding
-set foldmethod=indent
-set foldlevel=99
+set foldmethod=syntax
+" set foldmethod=indent
+" set foldlevel=99
 
 " Use spacebar to fold code
 " nnoremap <space> za
+"
+
+
+" Display Tab Number on the tabline
+fu! MyTabLabel(n)
+let buflist = tabpagebuflist(a:n)
+let winnr = tabpagewinnr(a:n)
+let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+return empty(string) ? '[unnamed]' : string
+endfu
+
+fu! MyTabLine()
+let s = ''
+for i in range(tabpagenr('$'))
+" select the highlighting
+    if i + 1 == tabpagenr()
+    let s .= '%#TabLineSel#'
+    else
+    let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    "let s .= '%' . (i + 1) . 'T'
+    " display tabnumber (for use with <count>gt, etc)
+    let s .= ' '. (i+1) . ' ' 
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+
+    if i+1 < tabpagenr('$')
+        let s .= ' |'
+    endif
+endfor
+return s
+endfu
+set tabline=%!MyTabLine()
+
+" Remap a leader to quickly go to a specific tab
+noremap <space>1 1gt
+noremap <space>2 2gt
+noremap <space>3 3gt
+noremap <space>4 4gt
+noremap <space>5 5gt
+noremap <space>6 6gt
+noremap <space>7 7gt
+noremap <space>8 8gt
+noremap <space>9 9gt
+noremap <space>0 :tablast<cr>

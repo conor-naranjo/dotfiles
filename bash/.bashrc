@@ -9,7 +9,7 @@
 alias ls='ls -G'
 
 # use python3 pip
-alias pip='pip3'
+# alias pip='pip3'
 
 # sdcv searches a dict file in ~/stardict/dic
 alias define='sdcv'
@@ -59,7 +59,7 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
-export PATH=/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.rd/bin
+export PATH=$HOME/Library/Python/3.9/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.rd/bin
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 shopt -s extglob
@@ -96,6 +96,17 @@ getip() {
 	elinks -dump http://whatismyip.org | grep "Your IP:"
 }
 
+#setup terminal tab title
+function title {
+    if [ "$1" ]
+    then
+        unset PROMPT_COMMAND
+        echo -ne "\033]0;${*}\007"
+    else
+        export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+    fi
+}
+
 # Enable programmable completion features
 if ! shopt -oq posix; then
 	if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -108,3 +119,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Created by `pipx` on 2022-08-16 22:01:59
+export PATH="$PATH:$HOME/.local/bin"
