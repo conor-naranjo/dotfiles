@@ -64,6 +64,14 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
 """ END PYTHON SETTINGS
 
+" Set Color Scheme for TypeScript/TypeScriptReact files
+autocmd! BufEnter,BufNewFile *.ts set background=dark
+autocmd! BufEnter,BufNewFile *.ts color PaperColor
+autocmd! BufLeave *.ts color basic
+
+autocmd! BufEnter,BufNewFile *.tsx set background=dark
+autocmd! BufEnter,BufNewFile *.tsx color PaperColor
+autocmd! BufLeave *.tsx color basic
 
 " Display filename
 set laststatus=2
