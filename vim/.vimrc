@@ -142,3 +142,8 @@ noremap <space>7 7gt
 noremap <space>8 8gt
 noremap <space>9 9gt
 noremap <space>0 :tablast<cr>
+
+" Pretty-Print / Collapse JSON while in visual mode
+" Requires jq to be installed
+vnoremap <C-j> :%!jq .<CR>
+vnoremap <C-k> :%!jq -c .<CR>

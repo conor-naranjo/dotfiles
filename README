@@ -29,3 +29,7 @@ To install YCM, need to fetch plugins then cd to YCM location in .vim
 Install deps based on README of ycm-core/YouCompleteMe then fetch YCM submodules and install:
 git submodule update --init --recursive
 python3 install.py --clangd-completer --cs-completer --go-completer --ts-completer
+
+
+vimrc has a dependency on jq in order to provide visual mode
+pretty-print/collapse of JSON
