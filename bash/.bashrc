@@ -55,7 +55,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin
 
 shopt -s extglob
 
-if [ -x $(command -v cowsay) -a -x command $(command -v fortune) ]; then
+if [ -x $(command -v cowsay) -a -x $(command -v fortune) ]; then
 	fortune | cowsay
 fi
 
