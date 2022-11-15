@@ -10,3 +10,6 @@
 [submodule "vim/.vim/pack/conor/start/YouCompleteMe"]
 	path = vim/.vim/pack/conor/start/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe
+[submodule "vim/.vim/pack/conor/start/vim-fetch"]
+	path = vim/.vim/pack/conor/start/vim-fetch
+	url = https://github.com/wsdjeg/vim-fetch
