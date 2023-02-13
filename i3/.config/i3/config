@@ -31,7 +31,7 @@ font adobe-source code pro-bold-o-normal--0-0-0-0-m-0-iso-8859-10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 
 # lock the screen + start xscreensaver
 # Windows + Alt + L
