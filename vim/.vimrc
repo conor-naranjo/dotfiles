@@ -74,7 +74,7 @@ autocmd! BufEnter,BufNewFile *.tsx color PaperColor
 autocmd! BufLeave *.tsx color basic
 
 " Display filename
-set laststatus=2
+" set laststatus=2
 
 " Use UTF-8
 set encoding=utf-8
@@ -147,3 +147,79 @@ noremap <space>0 :tablast<cr>
 " Requires jq to be installed
 vnoremap <C-j> :%!jq .<CR>
 vnoremap <C-k> :%!jq -c .<CR>
+
+" Execute Shell Command and Output in New Buffer
+let s:lastcmd = ''
+function! s:RunShellCommand(cmdline, bang)
+    " Support for repeating last cmd with bang:
+    let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
+
+    if _ == ''
+        return
+    endif
+
+    let s:lastcmd = _
+    let bufnr = bufnr('%')
+    let winnr = bufwinnr(_)
+    " You can position the new window whenever you want, I chose below + right:
+    silent! execute  winnr < 0 ? 'tabnew ' . fnameescape(_) : winnr . 'wincmd w'
+    " I could set buftype=nofile, but then no switching back and forth buffers.
+    " The results are presented just for viewing, not editing, modify at will:
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+
+    setlocal modifiable
+    silent! :%d
+    " Useful for debugging, if you encounter issues with fnameescape():
+    call setline(1, 'You entered:  ' . a:cmdline)
+    call setline(2, 'Expanded to:  ' . _)
+    call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+
+    silent execute '$read !' . _
+    silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+    " If resizing is unwanted for commands with too much output, remove this line:
+    silent! execute 'autocmd BufEnter  <buffer> execute ''resize '' .  line(''$'')'
+    " You can use <localleader>r to re-execute the last command:
+    silent! execute 'nnoremap <silent> <buffer> <localleader>r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
+
+    execute 'resize ' . line('$')
+
+    setlocal nomodifiable
+    1
+endfunction " RunShellCommand(cmdline)
+command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>, '<bang>')
+
+" Custom Statusline
+" https://gabri.me/blog/diy-vim-statusline
+" https://elianiva.my.id/post/vim-statusline/
+" https://shapeshed.com/vim-statuslines/
+"
+set laststatus=2
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%#GitColor#%{StatuslineGit()}
+set statusline+=%#LineNr#
+" set statusline+=%#StatusColor#
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=%m
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ %{strftime('%T')}
+set statusline+=\ 
+
+" https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
+hi GitColor guifg=Green guibg=Black ctermbg=16 ctermfg=34
+hi StatusColor guifg=White guibg=Black ctermbg=0 ctermfg=231
