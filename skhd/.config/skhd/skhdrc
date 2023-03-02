@@ -1,6 +1,6 @@
 # see github.com/armand1m/dotfiles/blob/master/.skhdrc for example
 # open Terminal
-cmd - return : open -n -a "iTerm"
+cmd - return : open -n -a "Alacritty"
 
 # open Firefox
 cmd + shift - f : open -n -a "Firefox"

@@ -62,6 +62,9 @@ export GEM_HOME=~/.ruby/
 export PATH=$HOME/Library/Python/3.9/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.rd/bin
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# Tmux 256 color
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
 shopt -s extglob
 
 if [ -x $(command -v cowsay) -a -x $(command -v fortune) ]; then
