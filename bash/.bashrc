@@ -51,7 +51,7 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.dotnet/tools
 
 shopt -s extglob
 

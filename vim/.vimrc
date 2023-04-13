@@ -147,3 +147,12 @@ noremap <space>0 :tablast<cr>
 " Requires jq to be installed
 vnoremap <C-j> :%!jq .<CR>
 vnoremap <C-k> :%!jq -c .<CR>
+
+" CtrlP configuration
+if executable('rg')
+	set grepprg=rg\ --color=never
+	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+	let g:ctrlp_use_caching = 0
+endif
+" Ignore git files and swap files
+set wildignore+=*/.git/*,*/tmp/*,*.swp
