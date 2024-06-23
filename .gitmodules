@@ -16,3 +16,9 @@
 [submodule "vim/.vim/pack/conor/start/ctrlp"]
 	path = vim/.vim/pack/conor/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/.vim/pack/conor/opt/omnisharp"]
+	path = vim/.vim/pack/conor/opt/omnisharp
+	url = https://github.com/OmniSharp/Omnisharp-vim
+[submodule "vim/.vim/pack/conor/start/vimwiki"]
+	path = vim/.vim/pack/conor/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki

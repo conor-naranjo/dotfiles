@@ -21,7 +21,7 @@
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  #  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -165,7 +165,8 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 6.5 # Bug where alacritty starts with 2x font size
+  # size: 7.5 # When using laptop screen
+  size: 8.5 # Bug where alacritty starts with 2x font size
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

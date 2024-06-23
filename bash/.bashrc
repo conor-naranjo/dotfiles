@@ -2,6 +2,13 @@
 # ~/.bashrc
 #
 
+# Use gvim because vim isn't compiled with XOrg support in Arch
+# alias vim="gvim"
+
+# Force tmux to assume 256-color support
+alias tmux="tmux -2"
+force_color_prompt=yes
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -51,7 +58,7 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.dotnet/tools
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin
 
 shopt -s extglob
 
