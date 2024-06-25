@@ -51,11 +51,11 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.dotnet/tools
 
 shopt -s extglob
 
-if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
+if [ -x $(command -v cowsay) -a -x $(command -v fortune) ]; then
 	fortune | cowsay
 fi
 
@@ -95,3 +95,13 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+function title {
+    if [ "$1" ]
+    then
+        unset PROMPT_COMMAND
+        echo -ne "\033]0;${*}\007"
+    else
+        export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+    fi
+}

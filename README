@@ -19,3 +19,13 @@ After running git submodule add, commit changes to .gitmodules
 
 On a fresh clone of the dotfiles, to install Vim plugins run:
 ./get-submodules.sh
+
+
+For vim, additional configuration is done for autocomplete, etc.
+Uses YouCompleteMe for LSP and auto-completion support.
+
+To install YCM, need to fetch plugins then cd to YCM location in .vim
+
+Install deps based on README of ycm-core/YouCompleteMe then fetch YCM submodules and install:
+git submodule update --init --recursive
+python3 install.py --clangd-completer --cs-completer --go-completer --ts-completer
