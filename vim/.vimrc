@@ -154,5 +154,10 @@ if executable('rg')
 	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 	let g:ctrlp_use_caching = 0
 endif
+
 " Ignore git files and swap files
 set wildignore+=*/.git/*,*/tmp/*,*.swp
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/wiki/', 'syntax': 'markdown', 'diary_rel_path': 'Daily Notes'}]
+let g:vimwiki_folding='list'

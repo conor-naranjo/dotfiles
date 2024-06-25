@@ -46,7 +46,7 @@ bindsym $mod+d exec dmenu_run
 # Launches various programs
 # bindsym $mod+g exec chromium
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Shift+s exec "$HOME/bin/fuzzpak spotify"
+bindsym $mod+Shift+s exec spotify-launcher
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -176,8 +176,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10  # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10  # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 10  # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 10  # decrease screen brightness
 
 # Colors: 
 # <colorclass>           <border>    <bg>        <txt>       <indicator>   <child_border>
@@ -185,9 +185,15 @@ client.focused           #912226     #000000     #eaeaea     #eaeaea       #9122
 client.unfocused         #1d2594     #000000     #eaeaea     #eaeaea       #1d2594
 client.focused_inactive  #1d2594     #000000     #eaeaea     #eaeaea       #1d2594
 
-# Binds F6 to call 'scrot --select -e 'mv $f ~/Pictures/'
-#bindsym F6 exec scrot --select -e 'mv $f ~/Pictures/'
+# Binds Win + Alt + 4 to take a screenshot and save the file
+bindsym $mod+$alt+4 exec "maim -s ~/Pictures/screenshots/$(date +%Y)/$(date +%m.%d.%s | tr A-Z a-z).png
+# Binds Win + Alt + S to take a screenshot and save to clipboard
+bindsym $alt+$mod+s exec "maim -s | xclip -selection clipboard -t image/png"
 
+bindsym $alt+$mod+5 exec "maim ~/Pictures/screenshots/$(date +%Y)/$(date +%m.%d.%s | tr A-Z a-z).png
+
+# Assign windows to specific workspaces
+for_window [class="steam"] move to workspace 9
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
