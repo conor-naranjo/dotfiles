@@ -1,0 +1,37 @@
+[global]
+    monitor = 0
+    follow = none
+    origin = bottom-right
+    width = (100, 800)
+    height = (0, 1000)
+    offset = (0, 10) # 0 from right, 10 from top 
+    font = "Hack 10"
+    format = "%a - %s (%b)"
+    idle_threshold = 0
+    history_length = 20
+    sticky_history = true
+    stack_duplicates = false
+
+    separator_color = frame
+    highlight = "#527294"
+
+    script = ~/bin/dunst_log_filter
+    
+
+[urgency_low]
+background = "#0b0b0a"
+foreground = "#78746e"
+frame_color = "#182238"
+timeout = 0
+
+[urgency_normal]
+background = "#0b0b0a"
+foreground = "#c8c4bc"
+frame_color = "#293f66"
+timeout = 0
+
+[urgency_critical]
+background = "#0b0b0a"
+foreground = "#e6e2da"
+frame_color = "#99292d"
+timeout = 0

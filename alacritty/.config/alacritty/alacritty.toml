@@ -1,0 +1,49 @@
+[window]
+dynamic_title = true
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[scrolling]
+history = 500
+
+[font.normal]
+family = "Hack"
+style = "Regular"
+
+[font.bold]
+family = "Hack"
+style = "Bold"
+
+[font.italic]
+family = "Hack"
+style = "Italic"
+
+[font.bold_italic]
+family = "Hack"
+style = "Bold Italic"
+
+[colors.primary]
+background = "#0b0b0a"
+foreground = "#c8c4bc"
+
+[colors.normal]
+black   = "#0b0b0a"
+red     = "#99292d"
+green   = "#2ea043"
+yellow  = "#c99a2e"
+blue    = "#293f66"
+magenta = "#9466a8"
+cyan    = "#468a87"
+white   = "#c8c4bc"
+
+[colors.bright]
+black   = "#57534e"
+red     = "#cc3e3e"
+green   = "#3fb950"
+yellow  = "#dfb454"
+blue    = "#527294"
+magenta = "#ad85bf"
+cyan    = "#62aba7"
+white   = "#e6e2da"

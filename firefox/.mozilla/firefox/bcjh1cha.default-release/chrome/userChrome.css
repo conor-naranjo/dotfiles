@@ -1,0 +1,66 @@
+:root {
+  /* Tab bar & frame background (matches i3bar #0b0b0a) */
+  --lwt-accent-color: #0b0b0a !important;
+  --lwt-text-color: #78746e !important;
+  --lwt-accent-color-inactive: #0b0b0a !important;
+
+  /* Navbar & Active Tab background */
+  --toolbar-bgcolor: #141312 !important;
+  --toolbar-color: #c8c4bc !important;
+  --tab-selected-bgcolor: #1a1516 !important;
+  --tab-selected-textcolor: #e6e2da !important;
+  --tab-selected-outline-color: #99292d !important;
+
+  /* Active tab top/outline indicator (matches i3 focused crimson #99292d) */
+  --tab-line-color: #99292d !important;
+  --focus-outline-color: #99292d !important;
+
+  /* URL bar / input field */
+  --toolbar-field-background-color: #0b0b0a !important;
+  --toolbar-field-color: #c8c4bc !important;
+  --toolbar-field-border-color: #182238 !important;
+  --toolbar-field-focus-background-color: #0b0b0a !important;
+  --toolbar-field-focus-color: #e6e2da !important;
+  --toolbar-field-focus-border-color: #99292d !important;
+  --urlbar-box-bgcolor: #0b0b0a !important;
+  --urlbar-box-focus-bgcolor: #0b0b0a !important;
+
+  /* Popups / context menus / autocomplete dropdown */
+  --arrowpanel-background: #0b0b0a !important;
+  --arrowpanel-color: #c8c4bc !important;
+  --arrowpanel-border-color: #182238 !important;
+  --panel-item-hover-bgcolor: #182238 !important;
+
+  /* Sidebar & Vertical Tabs container */
+  --sidebar-background-color: #0b0b0a !important;
+  --sidebar-text-color: #c8c4bc !important;
+  --sidebar-border-color: #182238 !important;
+}
+
+/* Match navigator toolbox border with dark midnight navy */
+#navigator-toolbox {
+  background-color: #0b0b0a !important;
+  border-bottom: 1px solid #182238 !important;
+}
+
+/* Active vs Inactive Tab styling (works for both horizontal & vertical sidebar tabs) */
+.tabbrowser-tab:is([selected="true"], [visuallyselected="true"]) .tab-background {
+  background-color: #1a1516 !important;
+  border: 2px solid #99292d !important;
+  outline: 1px solid #99292d !important;
+  outline-offset: -1px !important;
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab:not([selected="true"]):hover .tab-background {
+  background-color: #141312 !important;
+  border: 1px solid #293f66 !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) .tab-background {
+  background-color: #0b0b0a !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: #78746e !important;
+}
