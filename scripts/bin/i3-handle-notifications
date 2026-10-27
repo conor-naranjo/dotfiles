@@ -1,0 +1,32 @@
+#!/bin/bash
+
+LOG_FILE="/tmp/dunst_active_ids.log"
+touch "$LOG_FILE"
+
+notify-send "starting i3-handle-notifications"
+
+i3-msg -t subscribe -m '["window"]' | jq -r 'select(.change == "focus").container.window_properties.class' | while read -r FOCUSED_WINDOW; do
+
+	if [ ! -s "$LOG_FILE" ] || [[ "$FOCUSED_WINDOW" == "null" ]]; then
+		continue
+	fi
+
+	TMP_LIST=$(mktemp)
+
+	# read the dunst log file
+	while read -r line; do
+		NOTIF_ID=$(echo "$line" | awk '{print $1}')
+		NOTIF_APP=$(echo "$line" | cut -d' ' -f2-)
+
+		# if [[ "${NOTIF_APP,,}" == "${FOCUSED_APP,,}" ]]; then
+		if [[ "${NOTIF_APP,,}" == "${FOCUSED_WINDOW,,}" ]]; then
+			dunstctl close "$NOTIF_ID"
+		else
+			# if we dont match, keep the id in the tmp_list
+			echo "$line" >> "$TMP_LIST"
+		fi
+
+	done < "$LOG_FILE"
+
+	mv "$TMP_LIST" "$LOG_FILE"
+done

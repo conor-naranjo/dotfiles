@@ -87,16 +87,6 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Highlight the current working line
 set cursorline
 
-" Enable code folding
-set foldmethod=syntax
-" set foldmethod=indent
-" set foldlevel=99
-
-" Use spacebar to fold code
-" nnoremap <space> za
-"
-
-
 " Display Tab Number on the tabline
 fu! MyTabLabel(n)
 let buflist = tabpagebuflist(a:n)
@@ -161,3 +151,15 @@ set wildignore+=*/.git/*,*/tmp/*,*.swp
 " VimWiki
 let g:vimwiki_list = [{'path': '~/wiki/', 'syntax': 'markdown', 'diary_rel_path': 'Daily Notes'}]
 let g:vimwiki_folding='list'
+au BufRead,BufNewFile *.wiki set filetype=markdown
+let g:markdown_folding = 1
+
+" Enable code folding
+set foldmethod=syntax
+" set foldmethod=indent
+" set foldlevel=99
+
+" Use spacebar to fold code
+" nnoremap <space> za
+"
+

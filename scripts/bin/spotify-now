@@ -30,6 +30,11 @@ title () {
     res=$(echo "$META" | grep -m 1 "xesam:title" -b1 | tail -n1)
     res="${res%\"*}"
     res="${res#*\"}"
+
+    if [[ "$res" == *"\""* ]]; then
+        res=$(echo $res | sed 's/\"/\\\"/g')
+    fi
+
     echo "$res"
 }
 track () {

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# parses incoming dunst notifications to either close immediately if that window
+# is active to avoid displaying a notification or push the notification id to a
+# file so that we can fetch it later to close the notification when the emitter
+# window becomes active (window events and closing are handled in i3 config)
+
+NOTIF_APPNAME="$1"
+LOG_FILE="/tmp/dunst_active_ids"
+
+FOCUSED_WINDOW=$(i3-msg -t get_tree | jq -r '.. | select(.focused? == true).window_properties.class')
+
+# Uncomment if needing to debug
+# echo "$(date) - notification from: $NOTIF_APPNAME | Focused: $FOCUSED_WINDOW" >> /tmp/dunst_debug.log
+
+# bash-specific to-lower ,,
+# not posix-compatible in general - remember to replace this if trying to port
+# this setup to a different system
+if [[ "${NOTIF_APPNAME,,}" == "${FOCUSED_WINDOW,,}" ]]; then
+	# close the notification right away because we're on the emitter window
+	dunstctl close
+
+	# do not log the notification id because we do not need to close it
+	# later
+	exit 0
+fi
+
+# log event id
+# DUNST_ID is created and passed by dunst when processing an event
+if [ -n "$DUNST_ID" ]; then
+	echo "$DUNST_ID $NOTIF_APPNAME" >> "$LOG_FILE"
+fi

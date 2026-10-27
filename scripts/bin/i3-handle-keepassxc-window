@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+
+LOG_FILE="/tmp/keepass-listener.log"
+touch "$LOG_FILE"
+
+TARGET_CLASS="keepassxc"
+IS_SELECTED=false
+
+notify-send "starting i3 keepass listener"
+
+i3-msg -t subscribe -m '["window"]' | jq -r 'select(.change == "focus").container.window_properties.class' | while read -r FOCUSED_WINDOW; do
+
+	echo "focused window: $FOCUSED_WINDOW" >> "$LOG_FILE"
+
+	if [[ "${FOCUSED_WINDOW,,}" == $TARGET_CLASS ]]; then
+		if [ "$IS_SELECTED" = false ]; then
+			clipctl disable
+			notify-send "disabled clipboard history"
+			echo "$(date): disable command executed" >> "$LOG_FILE"
+			IS_SELECTED=true	
+		fi
+	else
+		if [ "$IS_SELECTED" = true ]; then
+			clipctl enable
+			echo "$(date): enable command executed" >> "$LOG_FILE"
+			IS_SELECTED=false
+		fi
+	fi
+done

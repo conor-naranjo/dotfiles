@@ -1,9 +1,10 @@
 #
 # ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+export TERM=xterm-256color
 
 alias ls='ls --color=auto'
 
@@ -12,6 +13,15 @@ alias define='sdcv'
 
 # Opens Firefox on a fresh, disposable profile
 alias fx='firefox --new-instance --profile $(mktemp -d)'
+
+# Borg
+export BORG_REPO='conor@10.13.2.10:/srv/dev-disk-by-uuid-b7318905-c837-41b2-ab61-e76d9010bf7e/backup/desktop_backups'
+
+# Rocm 
+export ROCM_PATH=/opt/rocm
+export HIP_PATH=/opt/rocm
+# RDNA 4 / 9070XT uses gfx1200 or gfx1201 target; auto-detect handles it, or explicit:
+export HSA_OVERRIDE_GFX_VERSION=12.0.0 
 
 # Cycle through available options on tab-completion:
 [[ $- = *i* ]] && bind TAB:menu-complete
@@ -52,6 +62,10 @@ export GOROOT=/usr/local/go
 export NPM_GLOBAL=$HOME/.npm-global/bin
 export GEM_HOME=~/.ruby/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$NPM_GLOBAL:$GEM_HOME/bin:$HOME/bin:$HOME/.dotnet/tools
+
+# ArgoCD
+## default to grpc-web to avoid trying to get http2 h2c working from HAProxy -> Traefik
+export ARGOCD_OPTS="--grpc-web"
 
 shopt -s extglob
 
@@ -105,3 +119,10 @@ function title {
         export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
     fi
 }
+
+
+export HIP_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=0
+
+# Added by bifrost installer
+export PATH="$HOME/.bifrost/bin:$PATH"
